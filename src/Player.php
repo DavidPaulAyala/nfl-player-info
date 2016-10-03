@@ -79,5 +79,32 @@
         }
         return $quarterback_array;
       }
+
+      function save()
+      {
+        $GLOBALS['DB']->exec("INSERT INTO players (first_name, last_name, team, td) VALUES ('{$this->first_name}', '{$this->last_name}', '{$this->team}', {$this->td});");
+        $this->id = $GLOBALS['DB']->lastInsertID();
+      }
+
+      static function getAll()
+      {
+        $quarterbacks = $GLOBALS['DB']->query('SELECT * FROM players;');
+        $player_array = array();
+        foreach ($quarterbacks as $quarterback) {
+          $id = $quarterback['id'];
+          $first_name = $quarterback['first_name'];
+          $last_name = $quarterback['last_name'];
+          $team = $quarterback['team'];
+          $td = $quarterback['td'];
+          $new_player = new Player($first_name, $last_name, $team, $td, $id);
+          array_push($player_array, $new_player);
+        }
+        return $player_array;
+      }
+
+      static function deleteAll()
+      {
+        $GLOBALS['DB']->exec("DELETE FROM players;");
+      }
     }
 ?>
