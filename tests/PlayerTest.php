@@ -5,7 +5,6 @@
     * @backupStaticAttributes disabled
     */
     require_once "src/Player.php";
-    require_once "src/functions.php";
     // $server = 'mysql:host=localhost;dbname=nfl_players_test';
     // $username = 'root';
     // $password = 'root';
@@ -13,10 +12,10 @@
 
     class PlayerTest extends PHPUnit_Framework_TestCase
     {
-        function test_getPlayer()
+        function testGetPlayer()
         {
             // Arrange
-            $testPlayer = new Player("Andrew", "Luck", "QB");
+            $testPlayer = new Player("Andrew", "Luck", "IND", "4");
 
             $result = $testPlayer->getFirstName();
 
@@ -25,21 +24,21 @@
             $this->assertEquals("Andrew", $result);
         }
 
-        function test_getFirst()
+        function testGetPlayers()
         {
-            // Arrange
+          $quarterbacks = Player::getPlayers();
+          $first_player = $quarterbacks[0];
+          $result = $first_player->getFirstName();
+          $this->assertEquals('Andrew', $result);
+        }
 
-            $first_player = setUp();
-            $testPlayer = new Player((string)$first_player['firstName'], (string)$first_player['lastName'], "QB");
-
-            $result = $testPlayer->getFirstName();
-
-
-            // Assert
-            $this->assertEquals("Andrew", $result);
+        function testGetTouchdowns()
+        {
+          $quarterbacks = Player::getPlayers();
+          $first_player = $quarterbacks[2];
+          $result = $first_player->getTd();
+          $this->assertEquals(3, $result);
         }
     }
-
-
 
 ?>
