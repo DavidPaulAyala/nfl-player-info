@@ -16,10 +16,6 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-
-
-
-
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views'
     ));
@@ -41,12 +37,6 @@
       Player::deleteAll();
       return $app->redirect("/");
     });
-
-
-
-    // $app->get("/test", function() use ($app) {
-    //   return 'test variables here';
-    // });
 
     return $app;
 ?>
