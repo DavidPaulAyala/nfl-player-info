@@ -1,7 +1,7 @@
-# _{Application Name}_
-#### _{Date of current version}_
+# _NFL Players_
+#### _08 October 2016_
 
-#### By _**David Ayala**_
+#### By _**David Ayala and Josh Huffman**_
 
 ## Description
 
@@ -61,4 +61,4 @@ MySQL_
 
 *This product can be used in accordance with the provisions under its MIT license.*
 
-copyright (c) 2016 **_David Ayala_**
+copyright (c) 2016 **_David Ayala and Josh Huffman_**
