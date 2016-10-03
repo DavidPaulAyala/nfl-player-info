@@ -18,6 +18,11 @@ access xml document from nfl URL
 parse info and save into database
 access database with Silex
 
+## Development info
+
+http://api.fantasy.nfl.com/v1/players/scoringleaders?season=2016&week=1
+
+http://api.fantasy.nfl.com/v1/docs/service?serviceName=playersScoringLeaders
 
 
 ## Technologies Used

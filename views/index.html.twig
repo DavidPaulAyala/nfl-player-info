@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NFL Players</title>
+  </head>
+  <body>
+      <h1>NFL Players</h1>
+      {% if players is not empty %}
+        <h2>Player List</h2>
+        {% for player in players %}
+          <p>{{ player.getFirstName }} {{ player.getLastName}} -
+              {{ player.getPosition }} -
+              {{ player.getTeam }} - {{ player.getTd }} touchdowns</p>
+        {% endfor %}
+      {% endif %}
+  </body>
+</html>
