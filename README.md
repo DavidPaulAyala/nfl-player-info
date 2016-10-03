@@ -24,6 +24,10 @@ http://api.fantasy.nfl.com/v1/players/scoringleaders?season=2016&week=1
 
 http://api.fantasy.nfl.com/v1/docs/service?serviceName=playersScoringLeaders
 
+http://webtutsdepot.com/2009/07/25/how-to-parse-xml-with-php-part-one/
+
+http://webtutsdepot.com/2009/07/26/how-to-parse-xml-with-php-part2-xml-with-atrributes/
+
 
 ## Technologies Used
 
