@@ -11,7 +11,7 @@
 
     $app['debug'] = true;
 
-    $server = 'mysql:host=localhost:8889;dbname=nfl_players';
+    $server = 'mysql:host=localhost;dbname=nfl_players';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -21,17 +21,31 @@
     ));
 
     $app->get("/", function() use ($app) {
-      $players = Player::getAll();
-      return $app['twig']->render("index.html.twig", array('players'=>$players));
+      return $app['twig']->render("index.html.twig");
     });
 
     $app->get("/qb", function() use($app) {
-      $players = Player::getPos("QB");
+      $players = Player::getPos("K");
       return $app['twig']->render("qb.html.twig", array('players'=>$players));
-
-    })
+    });
 
     $app->get("/p", function() use($app) {
+      $retrieved_players = Player::getPlayers(0);
+      foreach ($retrieved_players as $player){
+        $player->save();
+      }
+      $retrieved_players = Player::getPlayers(1);
+      foreach ($retrieved_players as $player){
+        $player->save();
+      }
+      $retrieved_players = Player::getPlayers(2);
+      foreach ($retrieved_players as $player){
+        $player->save();
+      }
+      $retrieved_players = Player::getPlayers(3);
+      foreach ($retrieved_players as $player){
+        $player->save();
+      }
       $retrieved_players = Player::getPlayers(4);
       foreach ($retrieved_players as $player){
         $player->save();

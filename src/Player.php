@@ -142,7 +142,7 @@
           $intercepts = (int) $quarterback->stats['Int'];
           $fum = (int) $quarterback->stats['FumLost'];
 
-          $new_qb = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_tds, $intercepts);
+          $new_qb = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_tds, $intercepts, $fum);
 
           array_push($quarterback_array, $new_qb);
         }
