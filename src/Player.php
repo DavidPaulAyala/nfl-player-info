@@ -156,9 +156,9 @@
         $this->id = $GLOBALS['DB']->lastInsertID();
       }
 
-      static function getAll()
+      static function getPos($position)
       {
-        $quarterbacks = $GLOBALS['DB']->query('SELECT * FROM players;');
+        $quarterbacks = $GLOBALS['DB']->query("SELECT * FROM players WHERE position = '{$position}';");
         $player_array = array();
         foreach ($quarterbacks as $quarterback) {
           $first_name = $quarterback['first_name'];

@@ -25,6 +25,12 @@
       return $app['twig']->render("index.html.twig", array('players'=>$players));
     });
 
+    $app->get("/qb", function() use($app) {
+      $players = Player::getPos("QB");
+      return $app['twig']->render("qb.html.twig", array('players'=>$players));
+
+    })
+
     $app->get("/p", function() use($app) {
       $retrieved_players = Player::getPlayers(4);
       foreach ($retrieved_players as $player){
