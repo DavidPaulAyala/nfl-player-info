@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Quarterbacks</title>
+  </head>
+  <body>
+    <h1>2016 Weekly Stats</h1>
+    <h2>{{ player.getPosition }}</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Team</th>
+            <th>FF Points</th>
+            <th>Pass Yards</th>
+            <th>Pass TDs</th>
+            <th>Rush Yards</th>
+            <th>Rush TDs</th>
+            <th>Interceptions</th>
+            <th>Fumbles</th>
+        </tr>
+        {% for player in players %}
+            <tr>
+                <td>{{ player.getFirstName }} {{ player.getLastName}}</td>
+                <td>{{ player.getTeam }}</td>
+                <td>{{ player.getFfpoints}}</td>
+                <td>{{ player.getPassYds}}</td>
+                <td>{{ player.getPassTds}}</td>
+                <td>{{ player.getRushYds}}</td>
+                <td>{{ player.getRushTds}}</td>
+                <td>{{ player.getIntercepts}}</td>
+                <td>{{ player.getFum}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+  </body>
+</html>
