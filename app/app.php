@@ -29,6 +29,26 @@
       return $app['twig']->render("qb.html.twig", array('players'=>$players));
     });
 
+    $app->get("/rb", function() use($app) {
+      $players = Player::getPos("RB");
+      return $app['twig']->render("rb.html.twig", array('players'=>$players));
+    });
+
+    $app->get("/wr", function() use($app) {
+      $players = Player::getPos("WR");
+      return $app['twig']->render("wr.html.twig", array('players'=>$players));
+    });
+
+    $app->get("/te", function() use($app) {
+      $players = Player::getPos("TE");
+      return $app['twig']->render("te.html.twig", array('players'=>$players));
+    });
+
+    $app->get("/k", function() use($app) {
+      $players = Player::getPos("K");
+      return $app['twig']->render("k.html.twig", array('players'=>$players));
+    });
+
     $app->get("/p", function() use($app) {
       $retrieved_players = Player::getPlayers(0);
       foreach ($retrieved_players as $player){

@@ -146,7 +146,6 @@
 
           array_push($quarterback_array, $new_qb);
         }
-        var_dump($quarterback_array);
         return $quarterback_array;
       }
 
