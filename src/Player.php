@@ -175,7 +175,7 @@
           $intercepts = $quarterback['intercepts'];
           $fum = $quarterback['fum'];
           $id = $quarterback['id'];
-          $new_player = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_tds, $intercepts, $id);
+          $new_player = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_tds, $intercepts, $fum, $id);
           array_push($player_array, $new_player);
         }
         return $player_array;
