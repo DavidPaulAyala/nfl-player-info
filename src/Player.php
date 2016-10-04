@@ -25,10 +25,13 @@
       private $sack;
       private $safety;
       private $pts_alw;
+      private $year;
+      private $week;
       private $id;
 
 
-      function __construct($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw, $id = null)
+      function __construct($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety,
+       $pts_alw, $week, $year, $id = null)
       {
         $this->id = $id;
         $this->first_name = $first_name;
@@ -54,6 +57,9 @@
         $this->sack = $sack;
         $this->safety = $safety;
         $this->pts_alw = $pts_alw;
+        $this->week = $week;
+        $this->year = $year;
+
 
 
       }
@@ -198,6 +204,16 @@
         return $this->pts_alw;
       }
 
+      function getWeek()
+      {
+        return $this->week;
+      }
+
+      function getYear()
+      {
+        return $this->year;
+      }
+
 
 
       static function getPlayers($offset)
@@ -227,13 +243,14 @@
           $fg39 = (int) $player->stats['Fg39'];
           $fg49 = (int) $player->stats['Fg49'];
           $fg50 = (int) $player->stats['Fg50'];
-
           $td = (int) $player->stats['TD'];
           $sack = (int) $player->stats['Sack'];
           $pts_alw = (int) $player->stats['PtsAllowed'];
           $safety = (int) $player->stats['Saf'];
+          $week = 0;
+          $year = 0;
 
-          $new_qb = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw);
+          $new_qb = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw, $week, $year);
 
           array_push($player_array, $new_qb);
         }
@@ -242,9 +259,9 @@
 
       function save()
       {
-        $GLOBALS['DB']->exec("INSERT INTO players (first_name, last_name, position, team, ff_points, pass_yds, pass_tds, rush_yds, rush_tds, rec_yds, rec_tds, intercepts, fum, pat, fg19, fg29, fg39, fg49, fg50, td, sack, safety, pts_alw) VALUES ('{$this->first_name}', '{$this->last_name}','{$this->position}', '{$this->team}', {$this->ff_points}, {$this->pass_yds}, {$this->pass_tds},
+        $GLOBALS['DB']->exec("INSERT INTO players (first_name, last_name, position, team, ff_points, pass_yds, pass_tds, rush_yds, rush_tds, rec_yds, rec_tds, intercepts, fum, pat, fg19, fg29, fg39, fg49, fg50, td, sack, safety, pts_alw, week, year) VALUES ('{$this->first_name}', '{$this->last_name}','{$this->position}', '{$this->team}', {$this->ff_points}, {$this->pass_yds}, {$this->pass_tds},
           {$this->rush_yds}, {$this->rush_tds}, {$this->rec_yds},{$this->rec_tds},
-           {$this->intercepts}, {$this->fum}, {$this->pat}, {$this->fg19}, {$this->fg29}, {$this->fg39}, {$this->fg49}, {$this->fg50}, {$this->td}, {$this->sack}, {$this->safety}, {$this->pts_alw});");
+           {$this->intercepts}, {$this->fum}, {$this->pat}, {$this->fg19}, {$this->fg29}, {$this->fg39}, {$this->fg49}, {$this->fg50}, {$this->td}, {$this->sack}, {$this->safety}, {$this->pts_alw}, {$this->week}, {$this->year});");
         $this->id = $GLOBALS['DB']->lastInsertID();
       }
 
@@ -272,13 +289,14 @@
           $fg39 = $player['fg39'];
           $fg49 = $player['fg49'];
           $fg50 = $player['fg50'];
-
           $td = $player['td'];
           $sack = $player['sack'];
           $safety = $player['safety'];
           $pts_alw = $player['pts_alw'];
+          $week = $player['week'];
+          $year = $player['year'];
           $id = $player['id'];
-          $new_player = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw, $id);
+          $new_player = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw, $week, $year, $id);
           array_push($player_array, $new_player);
         }
         return $player_array;
