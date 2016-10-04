@@ -33,6 +33,11 @@
       return $app['twig']->render("qb.html.twig", array('players'=>$players));
     });
 
+    $app->get("/qb/{wk}/{yr}", function($wk, $yr) use($app) {
+      $players = Player::getByPosWeekYear("QB", $wk, $yr);
+      return $app['twig']->render("qb.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr));
+    });
+
     $app->get("/rb", function() use($app) {
       $players = Player::getPos("RB");
       return $app['twig']->render("rb.html.twig", array('players'=>$players));
@@ -60,29 +65,12 @@
 
     $app->post("/refresh", function() use($app) {
       Player::deleteAll();
-      $retrieved_players = Player::getPlayers(0);
-      foreach ($retrieved_players as $player){
-        $player->save();
-      }
-      $retrieved_players = Player::getPlayers(1);
-      foreach ($retrieved_players as $player){
-        $player->save();
-      }
-      $retrieved_players = Player::getPlayers(2);
-      foreach ($retrieved_players as $player){
-        $player->save();
-      }
-      $retrieved_players = Player::getPlayers(3);
-      foreach ($retrieved_players as $player){
-        $player->save();
-      }
-      $retrieved_players = Player::getPlayers(4);
-      foreach ($retrieved_players as $player){
-        $player->save();
-      }
-      $retrieved_players = Player::getPlayers(5);
-      foreach ($retrieved_players as $player){
-        $player->save();
+
+      for($i = 0; $i <= 5; $i++) {
+        $retrieved_players = Player::getPlayers($i);
+        foreach ($retrieved_players as $player){
+          $player->save();
+        }
       }
       return $app->redirect("/");
     });

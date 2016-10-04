@@ -220,12 +220,15 @@
       {
         $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
         $all_info = simplexml_load_file($url);
-        $week = $all_info['week'];
+        sleep(1);
+        $week = (int) $all_info['week'];
+        $year = (int) $all_info['season'];
         $player_array = array();
         // $week = 5;
         do {
           $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders?season=2016&week=". $week;
           $all_info = simplexml_load_file($url);
+          sleep(1);
           $players = $all_info->scoringLeader[$offset]->players;
 
 
@@ -253,9 +256,6 @@
             $sack = (int) $player->stats['Sack'];
             $pts_alw = (int) $player->stats['PtsAllowed'];
             $safety = (int) $player->stats['Saf'];
-
-            $year = 0;
-
             $new_qb = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw, $week, $year);
 
             array_push($player_array, $new_qb);
@@ -313,6 +313,43 @@
       static function getPos($position)
       {
         $players = $GLOBALS['DB']->query("SELECT * FROM players WHERE position = '{$position}';");
+        $player_array = array();
+        foreach ($players as $player) {
+          $first_name = $player['first_name'];
+          $last_name = $player['last_name'];
+          $position = $player['position'];
+          $team = $player['team'];
+          $ff_points = $player['ff_points'];
+          $pass_yds = $player['pass_yds'];
+          $pass_tds = $player['pass_tds'];
+          $rush_yds = $player['rush_yds'];
+          $rush_tds = $player['rush_tds'];
+          $rec_yds = $player['rec_yds'];
+          $rec_tds = $player['rec_tds'];
+          $intercepts = $player['intercepts'];
+          $fum = $player['fum'];
+          $pat = $player['pat'];
+          $fg19 = $player['fg19'];
+          $fg29 = $player['fg29'];
+          $fg39 = $player['fg39'];
+          $fg49 = $player['fg49'];
+          $fg50 = $player['fg50'];
+          $td = $player['td'];
+          $sack = $player['sack'];
+          $safety = $player['safety'];
+          $pts_alw = $player['pts_alw'];
+          $week = $player['week'];
+          $year = $player['year'];
+          $id = $player['id'];
+          $new_player = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw, $week, $year, $id);
+          array_push($player_array, $new_player);
+        }
+        return $player_array;
+      }
+
+      static function getByPosWeekYear($pos, $wk = 1, $yr = 2016)
+      {
+        $players = $GLOBALS['DB']->query("SELECT * FROM players WHERE position = '{$pos}' AND week = {$wk} AND year = {$yr};");
         $player_array = array();
         foreach ($players as $player) {
           $first_name = $player['first_name'];
