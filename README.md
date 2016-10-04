@@ -28,6 +28,8 @@ http://webtutsdepot.com/2009/07/25/how-to-parse-xml-with-php-part-one/
 
 http://webtutsdepot.com/2009/07/26/how-to-parse-xml-with-php-part2-xml-with-atrributes/
 
+git config --local include.path ../.gitconfig
+
 
 ## Technologies Used
 
