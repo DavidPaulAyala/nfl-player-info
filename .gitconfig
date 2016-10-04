@@ -1,0 +1,3 @@
+[alias]
+	pcm = pair-commit -m
+	lg = log --oneline --decorate --all --graph
