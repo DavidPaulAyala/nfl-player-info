@@ -34,8 +34,33 @@
     });
 
     $app->get("/qb/{wk}/{yr}", function($wk, $yr) use($app) {
-      $players = Player::getByPosWeekYear("QB", $wk, $yr);
+      $players = Player::getPosWkYr("QB", $wk, $yr);
       return $app['twig']->render("qb.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr));
+    });
+
+    $app->get("/rb/{wk}/{yr}", function($wk, $yr) use($app) {
+      $players = Player::getPosWkYr("RB", $wk, $yr);
+      return $app['twig']->render("rb.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr));
+    });
+
+    $app->get("/wr/{wk}/{yr}", function($wk, $yr) use($app) {
+      $players = Player::getPosWkYr("WR", $wk, $yr);
+      return $app['twig']->render("wr.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr));
+    });
+
+    $app->get("/te/{wk}/{yr}", function($wk, $yr) use($app) {
+      $players = Player::getPosWkYr("TE", $wk, $yr);
+      return $app['twig']->render("te.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr));
+    });
+
+    $app->get("/k/{wk}/{yr}", function($wk, $yr) use($app) {
+      $players = Player::getPosWkYr("K", $wk, $yr);
+      return $app['twig']->render("k.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr));
+    });
+
+    $app->get("/def/{wk}/{yr}", function($wk, $yr) use($app) {
+      $players = Player::getPosWkYr("DEF", $wk, $yr);
+      return $app['twig']->render("def.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr));
     });
 
     $app->get("/rb", function() use($app) {
