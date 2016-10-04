@@ -218,42 +218,87 @@
 
       static function getPlayers($offset)
       {
-        $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders?season=2016&week=1";
+        $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
         $all_info = simplexml_load_file($url);
-        $players = $all_info->scoringLeader[$offset]->players;
+        $week = $all_info['week'];
         $player_array = array();
+        // $week = 5;
+        do {
+          $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders?season=2016&week=". $week;
+          $all_info = simplexml_load_file($url);
+          $players = $all_info->scoringLeader[$offset]->players;
 
-        foreach($players->player as $player){
-          $first_name = (string) $player['firstName'];
-          $last_name = (string) $player['lastName'];
-          $position = (string) $player['position'];
-          $team = (string) $player['teamAbbr'];
-          $ff_points = (float) $player['pts'];
-          $pass_yds = (int) $player->stats['PassYds'];
-          $pass_tds = (int) $player->stats['PassTDs'];
-          $rush_yds = (int) $player->stats['RushYds'];
-          $rush_tds = (int) $player->stats['RushTDs'];
-          $rec_yds = (int) $player->stats['RecYds'];
-          $rec_tds = (int) $player->stats['RecTDs'];
-          $intercepts = (int) $player->stats['Int'];
-          $fum = (int) $player->stats['FumLost'];
-          $pat = (int) $player->stats['Pat'];
-          $fg19 = (int) $player->stats['Fg19'];
-          $fg29 = (int) $player->stats['Fg29'];
-          $fg39 = (int) $player->stats['Fg39'];
-          $fg49 = (int) $player->stats['Fg49'];
-          $fg50 = (int) $player->stats['Fg50'];
-          $td = (int) $player->stats['TD'];
-          $sack = (int) $player->stats['Sack'];
-          $pts_alw = (int) $player->stats['PtsAllowed'];
-          $safety = (int) $player->stats['Saf'];
-          $week = 0;
-          $year = 0;
 
-          $new_qb = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw, $week, $year);
+          foreach($players->player as $player){
+            $first_name = (string) $player['firstName'];
+            $last_name = (string) $player['lastName'];
+            $position = (string) $player['position'];
+            $team = (string) $player['teamAbbr'];
+            $ff_points = (float) $player['pts'];
+            $pass_yds = (int) $player->stats['PassYds'];
+            $pass_tds = (int) $player->stats['PassTDs'];
+            $rush_yds = (int) $player->stats['RushYds'];
+            $rush_tds = (int) $player->stats['RushTDs'];
+            $rec_yds = (int) $player->stats['RecYds'];
+            $rec_tds = (int) $player->stats['RecTDs'];
+            $intercepts = (int) $player->stats['Int'];
+            $fum = (int) $player->stats['FumLost'];
+            $pat = (int) $player->stats['Pat'];
+            $fg19 = (int) $player->stats['Fg19'];
+            $fg29 = (int) $player->stats['Fg29'];
+            $fg39 = (int) $player->stats['Fg39'];
+            $fg49 = (int) $player->stats['Fg49'];
+            $fg50 = (int) $player->stats['Fg50'];
+            $td = (int) $player->stats['TD'];
+            $sack = (int) $player->stats['Sack'];
+            $pts_alw = (int) $player->stats['PtsAllowed'];
+            $safety = (int) $player->stats['Saf'];
 
-          array_push($player_array, $new_qb);
-        }
+            $year = 0;
+
+            $new_qb = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw, $week, $year);
+
+            array_push($player_array, $new_qb);
+          }
+          $week--;
+        } while ($week > 0);
+
+        // $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders?season=2016&week=1";
+        // $all_info = simplexml_load_file($url);
+        // $players = $all_info->scoringLeader[$offset]->players;
+        // $player_array = array();
+        //
+        // foreach($players->player as $player){
+        //   $first_name = (string) $player['firstName'];
+        //   $last_name = (string) $player['lastName'];
+        //   $position = (string) $player['position'];
+        //   $team = (string) $player['teamAbbr'];
+        //   $ff_points = (float) $player['pts'];
+        //   $pass_yds = (int) $player->stats['PassYds'];
+        //   $pass_tds = (int) $player->stats['PassTDs'];
+        //   $rush_yds = (int) $player->stats['RushYds'];
+        //   $rush_tds = (int) $player->stats['RushTDs'];
+        //   $rec_yds = (int) $player->stats['RecYds'];
+        //   $rec_tds = (int) $player->stats['RecTDs'];
+        //   $intercepts = (int) $player->stats['Int'];
+        //   $fum = (int) $player->stats['FumLost'];
+        //   $pat = (int) $player->stats['Pat'];
+        //   $fg19 = (int) $player->stats['Fg19'];
+        //   $fg29 = (int) $player->stats['Fg29'];
+        //   $fg39 = (int) $player->stats['Fg39'];
+        //   $fg49 = (int) $player->stats['Fg49'];
+        //   $fg50 = (int) $player->stats['Fg50'];
+        //   $td = (int) $player->stats['TD'];
+        //   $sack = (int) $player->stats['Sack'];
+        //   $pts_alw = (int) $player->stats['PtsAllowed'];
+        //   $safety = (int) $player->stats['Saf'];
+        //   $week = 0;
+        //   $year = 0;
+        //
+        //   $new_qb = new Player($first_name, $last_name, $position, $team, $ff_points, $pass_yds, $pass_tds, $rush_yds, $rush_tds, $rec_yds, $rec_tds, $intercepts, $fum, $pat, $fg19, $fg29, $fg39, $fg49, $fg50, $td, $sack, $safety, $pts_alw, $week, $year);
+        //
+        //   array_push($player_array, $new_qb);
+        // }
         return $player_array;
       }
 
