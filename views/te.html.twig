@@ -10,17 +10,14 @@
       <div class="jumbotron">
         <h1>2016 Weekly Stats</h1>
       </div>
-      <h2>Quarterbacks</h2>
+      <h2>Tight End</h2>
       <table>
         <tr>
             <th>Name</th>
             <th>Team</th>
             <th>FF Points</th>
-            <th>Pass Yards</th>
-            <th>Pass TDs</th>
-            <th>Rush Yards</th>
-            <th>Rush TDs</th>
-            <th>Interceptions</th>
+            <th>Rec Yards</th>
+            <th>Rec TDs</th>
             <th>Fumbles</th>
         </tr>
         {% for player in players %}
@@ -28,11 +25,8 @@
                 <td>{{ player.getFirstName }} {{ player.getLastName}}</td>
                 <td>{{ player.getTeam }}</td>
                 <td>{{ player.getFfpoints}}</td>
-                <td>{{ player.getPassYds}}</td>
-                <td>{{ player.getPassTds}}</td>
-                <td>{{ player.getRushYds}}</td>
-                <td>{{ player.getRushTds}}</td>
-                <td>{{ player.getIntercepts}}</td>
+                <td>{{ player.getRecYds}}</td>
+                <td>{{ player.getRecTds}}</td>
                 <td>{{ player.getFum}}</td>
             </tr>
         {% endfor %}
