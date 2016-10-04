@@ -24,6 +24,10 @@
       return $app['twig']->render("index.html.twig");
     });
 
+    $app->get("/admin", function() use($app) {
+      return $app['twig']->render("admin.html.twig");
+    });
+
     $app->get("/qb", function() use($app) {
       $players = Player::getPos("QB");
       return $app['twig']->render("qb.html.twig", array('players'=>$players));
@@ -49,7 +53,8 @@
       return $app['twig']->render("k.html.twig", array('players'=>$players));
     });
 
-    $app->get("/p", function() use($app) {
+    $app->post("/refresh", function() use($app) {
+      Player::deleteAll();
       $retrieved_players = Player::getPlayers(0);
       foreach ($retrieved_players as $player){
         $player->save();
@@ -73,7 +78,7 @@
       return $app->redirect("/");
     });
 
-    $app->get("/d", function() use($app) {
+    $app->post("/clear", function() use($app) {
       Player::deleteAll();
       return $app->redirect("/");
     });
