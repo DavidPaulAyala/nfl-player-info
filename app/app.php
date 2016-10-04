@@ -25,7 +25,7 @@
     });
 
     $app->get("/qb", function() use($app) {
-      $players = Player::getPos("K");
+      $players = Player::getPos("QB");
       return $app['twig']->render("qb.html.twig", array('players'=>$players));
     });
 

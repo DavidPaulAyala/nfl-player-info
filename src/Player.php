@@ -133,7 +133,7 @@
           $last_name = (string) $quarterback['lastName'];
           $position = (string) $quarterback['position'];
           $team = (string) $quarterback['teamAbbr'];
-          $ff_points = (int) $quarterback['pts'];
+          $ff_points = (float) $quarterback['pts'];
           $pass_yds = (int) $quarterback->stats['PassYds'];
           $pass_tds = (int) $quarterback->stats['PassTDs'];
           $rush_yds = (int) $quarterback->stats['RushYds'];
@@ -146,6 +146,7 @@
 
           array_push($quarterback_array, $new_qb);
         }
+        var_dump($quarterback_array);
         return $quarterback_array;
       }
 
