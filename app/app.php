@@ -53,6 +53,11 @@
       return $app['twig']->render("k.html.twig", array('players'=>$players));
     });
 
+    $app->get("/def", function() use($app) {
+      $players = Player::getPos("DEF");
+      return $app['twig']->render("def.html.twig", array('players'=>$players));
+    });
+
     $app->post("/refresh", function() use($app) {
       Player::deleteAll();
       $retrieved_players = Player::getPlayers(0);
@@ -72,6 +77,10 @@
         $player->save();
       }
       $retrieved_players = Player::getPlayers(4);
+      foreach ($retrieved_players as $player){
+        $player->save();
+      }
+      $retrieved_players = Player::getPlayers(5);
       foreach ($retrieved_players as $player){
         $player->save();
       }

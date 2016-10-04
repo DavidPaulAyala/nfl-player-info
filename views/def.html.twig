@@ -3,37 +3,35 @@
   <head>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Kickers</title>
+    <title>Defense</title>
   </head>
   <body>
     <div class="container">
       <div class="jumbotron">
         <h1>2016 Weekly Stats</h1>
       </div>
-      <h2>Kicker</h2>
+      <h2>Defense</h2>
       <table>
         <tr>
             <th>Name</th>
-            <th>Team</th>
             <th>FF Points</th>
-            <th>PAT</th>
-            <th>FG < 19</th>
-            <th>FG < 29</th>
-            <th>FG < 39</th>
-            <th>FG < 49</th>
-            <th>FG > 50</th>
+            <th>TD</th>
+            <th>INT</th>
+            <th>Sack</th>
+            <th>Fumble Rec</th>
+            <th>Safety</th>
+            <th>Points Allowed</th>
         </tr>
         {% for player in players %}
             <tr>
                 <td>{{ player.getFirstName }} {{ player.getLastName}}</td>
-                <td>{{ player.getTeam }}</td>
                 <td>{{ player.getFfpoints }}</td>
-                <td>{{ player.getPat}}</td>
-                <td>{{ player.getFg19}}</td>
-                <td>{{ player.getFg29}}</td>
-                <td>{{ player.getFg39}}</td>
-                <td>{{ player.getFg49}}</td>
-                <td>{{ player.getFg50}}</td>
+                <td>{{ player.getTd }}</td>
+                <td>{{ player.getIntercepts }}</td>
+                <td>{{ player.getSack }}</td>
+                <td>{{ player.getFum }}</td>
+                <td>{{ player.getSafety }}</td>
+                <td>{{ player.getPtsAlw }}</td>
             </tr>
         {% endfor %}
         </table>
