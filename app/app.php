@@ -142,5 +142,16 @@
       return $app->redirect("/");
     });
 
+    $app->post("/create_team", function() use($app) {
+      $new_team = new Team($_POST['owner'], $_POST['team']);
+      $new_team->save();
+      return $app['twig']->render("team.html.twig", array('team' => $new_team));
+    });
+
+    $app->get("/team/{id}", function($id) use($app) {
+      $team = Team::find($id);
+      return $app['twig']->render("team.html.twig", array('team' => $team));
+    });
+
     return $app;
 ?>
