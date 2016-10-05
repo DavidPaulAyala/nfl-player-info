@@ -153,5 +153,11 @@
       return $app['twig']->render("team.html.twig", array('team' => $team));
     });
 
+    $app->post("/add_player", function() use($app) {
+
+      
+      return $app['twig']->render("team.html.twig", array('team' => $team));
+    });
+
     return $app;
 ?>

@@ -38,5 +38,17 @@
       </nav>
       <h3>{{ team.getTeam }}</h3>
       <h4>Owner: {{team.getOwner }}</h4>
+
+      <form action='/add_player' method='post'>
+        <h4>Add A Player</h4>
+        <input type='hidden' name='team_id' value='{{ team.getId }}'>
+        <label for='name'>Player Name:</label>
+        <input type='text' name='name' id='name'>
+        <label for='team'>Player's Team:</label>
+        <input type='text' name='team' id='team'>
+        <label for='position'>Player's Position:</label>
+        <input type='text' name='position' id='position'>
+        <button class='btn btn-success' type='submit'>Create!</button>
+      </form>
     </div>
   </body>
