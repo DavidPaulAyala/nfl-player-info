@@ -28,10 +28,7 @@
       return $app['twig']->render("admin.html.twig");
     });
 
-    $app->get("/qb", function() use($app) {
-      $players = Player::getPos("QB");
-      return $app['twig']->render("qb.html.twig", array('players'=>$players));
-    });
+
 
     $app->get("/qb/{wk}/{yr}", function($wk, $yr) use($app) {
       $players = Player::getPosWkYr("QB", $wk, $yr);
@@ -63,29 +60,64 @@
       return $app['twig']->render("def.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr, 'pos' => "def"));
     });
 
+    $app->get("/qb", function() use($app) {
+      $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
+      $all_info = simplexml_load_file($url);
+      sleep(1);
+      $wk = (int) $all_info['week'] - 1;
+      $yr = (int) $all_info['season'];
+      $players = Player::getPosWkYr("QB", $wk, $yr);
+      return $app['twig']->render("qb.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr, 'pos' => "qb"));
+    });
+
     $app->get("/rb", function() use($app) {
-      $players = Player::getPos("RB");
-      return $app['twig']->render("rb.html.twig", array('players'=>$players));
+      $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
+      $all_info = simplexml_load_file($url);
+      sleep(1);
+      $wk = (int) $all_info['week'] - 1;
+      $yr = (int) $all_info['season'];
+      $players = Player::getPosWkYr("RB", $wk, $yr);
+      return $app['twig']->render("rb.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr, 'pos' => "rb"));
     });
 
     $app->get("/wr", function() use($app) {
-      $players = Player::getPos("WR");
-      return $app['twig']->render("wr.html.twig", array('players'=>$players));
+      $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
+      $all_info = simplexml_load_file($url);
+      sleep(1);
+      $wk = (int) $all_info['week'] - 1;
+      $yr = (int) $all_info['season'];
+      $players = Player::getPosWkYr("WR", $wk, $yr);
+      return $app['twig']->render("wr.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr, 'pos' => "wr"));
     });
 
     $app->get("/te", function() use($app) {
-      $players = Player::getPos("TE");
-      return $app['twig']->render("te.html.twig", array('players'=>$players));
+      $$url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
+      $all_info = simplexml_load_file($url);
+      sleep(1);
+      $wk = (int) $all_info['week'] - 1;
+      $yr = (int) $all_info['season'];
+      $players = Player::getPosWkYr("TE", $wk, $yr);
+      return $app['twig']->render("te.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr, 'pos' => "te"));
     });
 
     $app->get("/k", function() use($app) {
-      $players = Player::getPos("K");
-      return $app['twig']->render("k.html.twig", array('players'=>$players));
+      $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
+      $all_info = simplexml_load_file($url);
+      sleep(1);
+      $wk = (int) $all_info['week'] - 1;
+      $yr = (int) $all_info['season'];
+      $players = Player::getPosWkYr("K", $wk, $yr);
+      return $app['twig']->render("k.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr, 'pos' => "k"));
     });
 
     $app->get("/def", function() use($app) {
-      $players = Player::getPos("DEF");
-      return $app['twig']->render("def.html.twig", array('players'=>$players));
+      $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
+      $all_info = simplexml_load_file($url);
+      sleep(1);
+      $wk = (int) $all_info['week'] - 1;
+      $yr = (int) $all_info['season'];
+      $players = Player::getPosWkYr("DEF", $wk, $yr);
+      return $app['twig']->render("def.html.twig", array('players'=>$players, 'week' => $wk, 'year' => $yr, 'pos' => "def"));
     });
 
     $app->post("/refresh", function() use($app) {

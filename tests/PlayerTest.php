@@ -20,7 +20,7 @@
         function testGetPlayer()
         {
             // Arrange
-            $testPlayer = new Player("Andrew", "Luck", "IND", "4");
+            $testPlayer = new Player("Andrew", "Luck", "QB", "IND", 4.1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
             $result = $testPlayer->getFirstName();
 
@@ -31,23 +31,23 @@
 
         function testGetPlayers()
         {
-          $quarterbacks = Player::getPlayers();
+          $quarterbacks = Player::getPlayers(0);
           $first_player = $quarterbacks[0];
           $result = $first_player->getFirstName();
-          $this->assertEquals('Andrew', $result);
+          $this->assertTrue(is_string($result));
         }
 
         function testGetTouchdowns()
         {
-          $quarterbacks = Player::getPlayers();
-          $first_player = $quarterbacks[2];
+          $quarterbacks = Player::getPlayers(0);
+          $first_player = $quarterbacks[0];
           $result = $first_player->getTd();
-          $this->assertEquals(3, $result);
+          $this->assertTrue(is_int($result));
         }
 
         function testSave()
         {
-          $test_quaterback = new Player("Joe", "Montana", "SF", "6");
+          $test_quaterback = new Player("Joe", "Montana", "QB", "SF", 4.1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
           $test_quaterback->save();
 
           $output = Player::getAll();

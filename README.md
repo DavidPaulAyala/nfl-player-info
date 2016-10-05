@@ -33,6 +33,12 @@ git config --local include.path ../.gitconfig
 
 http://fftoday.com/stats/
 
+http://www.fantasyfootballnerd.com/fantasy-football-api
+
+http://www.fantasyfootballnerd.com/service/players/xml/q6iqzehse977/QB/
+
+q6iqzehse977
+
 
 
 ## Technologies Used
