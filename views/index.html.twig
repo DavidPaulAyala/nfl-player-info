@@ -37,6 +37,14 @@
       </nav>
       <div class='fantasy'>
         <h3>Fantasy League</h3>
+        {% if teams is not empty %}
+          <h4>Fantasy Teams</h3>
+          <ul>
+            {% for team in teams %}
+              <li><a href='/team/{{ team.getId }}'>{{ team.getTeam }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
         <form action='/create_team' method='post'>
           <h4>Create a Team</h4>
           <label for='team'>Team Name:</label>

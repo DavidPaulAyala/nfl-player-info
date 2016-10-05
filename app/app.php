@@ -28,7 +28,8 @@
     ));
 
     $app->get("/", function() use ($app) {
-      return $app['twig']->render("index.html.twig");
+      $teams = Team::getAll();
+      return $app['twig']->render("index.html.twig", array('teams' => $teams));
     });
 
     $app->get("/admin", function() use($app) {
@@ -145,18 +146,24 @@
     $app->post("/create_team", function() use($app) {
       $new_team = new Team($_POST['owner'], $_POST['team']);
       $new_team->save();
-      return $app['twig']->render("team.html.twig", array('team' => $new_team));
+      $players = null;
+      return $app['twig']->render("team.html.twig", array('team' => $new_team, 'players' => $players));
     });
 
     $app->get("/team/{id}", function($id) use($app) {
       $team = Team::find($id);
-      return $app['twig']->render("team.html.twig", array('team' => $team));
+      $players = $team->getPlayers();
+      return $app['twig']->render("team.html.twig", array('team' => $team, 'players' => $players));
     });
 
     $app->post("/add_player", function() use($app) {
+      $team = Team::find($_POST['team_id']);
+      $new_player = new FantasyPlayer($_POST['name'], $_POST['position'], $_POST['team'], $_POST['team_id']);
+      $new_player->save();
+      $team->addPlayer($new_player->getId());
+      $players = $team->getPlayers();
 
-      
-      return $app['twig']->render("team.html.twig", array('team' => $team));
+      return $app['twig']->render("team.html.twig", array('team' => $team, 'players' => $players));
     });
 
     return $app;

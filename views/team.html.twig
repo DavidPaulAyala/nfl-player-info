@@ -38,6 +38,12 @@
       </nav>
       <h3>{{ team.getTeam }}</h3>
       <h4>Owner: {{team.getOwner }}</h4>
+      {% if players %}
+        <h4>Current Players</h4>
+        {% for player in players %}
+        <p>{{ player.getName }} -  {{ player.getPosition }} - {{ player.getTeam }}</p>
+        {% endfor %}
+      {% endif %}
 
       <form action='/add_player' method='post'>
         <h4>Add A Player</h4>
