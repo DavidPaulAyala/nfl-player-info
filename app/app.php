@@ -1,6 +1,8 @@
 <?php
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Player.php";
+    require_once __DIR__."/../src/FantasyPlayer.php";
+    require_once __DIR__."/../src/Team.php";
 
 
 
@@ -11,7 +13,12 @@
 
     $app['debug'] = true;
 
-    $server = 'mysql:host=localhost;dbname=nfl_players';
+    $server2 = 'mysql:host=localhost;dbname=nfl_players';
+    $username = 'root';
+    $password = 'root';
+    $DB2 = new PDO($server2, $username, $password);
+
+    $server = 'mysql:host=localhost;dbname=fantasy';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -27,8 +34,6 @@
     $app->get("/admin", function() use($app) {
       return $app['twig']->render("admin.html.twig");
     });
-
-
 
     $app->get("/qb/{wk}/{yr}", function($wk, $yr) use($app) {
       $players = Player::getPosWkYr("QB", $wk, $yr);
