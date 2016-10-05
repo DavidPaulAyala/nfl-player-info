@@ -1,9 +1,9 @@
 <?php
-
     /**
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
+
     require_once "src/FantasyPlayer.php";
     $server = 'mysql:host=localhost;dbname=fantasy_test';
     $username = 'root';
@@ -41,13 +41,15 @@
           $this->assertEquals($result->getTeamId(), 2);
         }
 
-        // function testGetPlayers()
-        // {
-        //   $players = FantasyPlayer::getPlayers(0);
-        //   $first_player = $players[0];
-        //   $result = $first_player->getName();
-        //   $this->assertTrue(is_string($result));
-        // }
+        function testGetAll()
+        {
+          $test_player = new FantasyPlayer("Tom Brady", "QB", "NE", 1);
+          $test_player->save();
+          $test_player2 = new FantasyPlayer("Victor Cruz", "WR", "NYG", 2);
+          $test_player2->save();
+          $result = FantasyPlayer::getAll();
+          $this->assertEquals([($test_player), ($test_player2)], $result);
+        }
     }
 
 ?>

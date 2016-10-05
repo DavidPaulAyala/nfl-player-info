@@ -8,7 +8,7 @@
     $server = 'mysql:host=localhost;dbname=nfl_players_test';
     $username = 'root';
     $password = 'root';
-    $DB = new PDO($server, $username, $password);
+    $DB2 = new PDO($server, $username, $password);
 
     class PlayerTest extends PHPUnit_Framework_TestCase
     {
@@ -45,6 +45,16 @@
           $this->assertTrue(is_int($result));
         }
 
+        function testGetAll()
+        {
+          $test_quaterback = new Player("Joe", "Montana", "QB", "SF", 4.1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+          $test_quaterback->save();
+          $test_quaterback2 = new Player("Steve", "Largent", "WR", "SEA", 4.1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+          $test_quaterback2->save();
+          $result = Player::getAll();
+          $this->assertEquals([($test_quaterback), ($test_quaterback2)], $result);
+        }
+
         function testSave()
         {
           $test_quaterback = new Player("Joe", "Montana", "QB", "SF", 4.1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
@@ -52,7 +62,7 @@
 
           $output = Player::getAll();
 
-          $this->assertEquals($test_quaterback, $output[0]);
+          $this->assertEquals([$test_quaterback], $output);
         }
 
     }

@@ -1,7 +1,6 @@
 <?php
   class FantasyPlayer
   {
-
     private $id;
     private $name;
     private $position;

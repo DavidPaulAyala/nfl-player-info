@@ -267,15 +267,15 @@
 
       function save()
       {
-        $GLOBALS['DB']->exec("INSERT INTO players (first_name, last_name, position, team, ff_points, pass_yds, pass_tds, rush_yds, rush_tds, rec_yds, rec_tds, intercepts, fum, pat, fg19, fg29, fg39, fg49, fg50, td, sack, safety, pts_alw, week, year) VALUES ('{$this->first_name}', '{$this->last_name}','{$this->position}', '{$this->team}', {$this->ff_points}, {$this->pass_yds}, {$this->pass_tds},
+        $GLOBALS['DB2']->exec("INSERT INTO players (first_name, last_name, position, team, ff_points, pass_yds, pass_tds, rush_yds, rush_tds, rec_yds, rec_tds, intercepts, fum, pat, fg19, fg29, fg39, fg49, fg50, td, sack, safety, pts_alw, week, year) VALUES ('{$this->first_name}', '{$this->last_name}','{$this->position}', '{$this->team}', {$this->ff_points}, {$this->pass_yds}, {$this->pass_tds},
           {$this->rush_yds}, {$this->rush_tds}, {$this->rec_yds},{$this->rec_tds},
            {$this->intercepts}, {$this->fum}, {$this->pat}, {$this->fg19}, {$this->fg29}, {$this->fg39}, {$this->fg49}, {$this->fg50}, {$this->td}, {$this->sack}, {$this->safety}, {$this->pts_alw}, {$this->week}, {$this->year});");
-        $this->id = $GLOBALS['DB']->lastInsertID();
+        $this->id = $GLOBALS['DB2']->lastInsertID();
       }
 
       static function getPos($position)
       {
-        $players = $GLOBALS['DB']->query("SELECT * FROM players WHERE position = '{$position}';");
+        $players = $GLOBALS['DB2']->query("SELECT * FROM players WHERE position = '{$position}';");
         $player_array = array();
         foreach ($players as $player) {
           $first_name = $player['first_name'];
@@ -312,7 +312,7 @@
 
       static function getAll()
       {
-        $players = $GLOBALS['DB']->query("SELECT * FROM players;");
+        $players = $GLOBALS['DB2']->query("SELECT * FROM players;");
         $player_array = array();
         foreach ($players as $player) {
           $first_name = $player['first_name'];
@@ -349,7 +349,7 @@
 
       static function getByPosWeekYear($pos, $wk = 1, $yr = 2016)
       {
-        $players = $GLOBALS['DB']->query("SELECT * FROM players WHERE position = '{$pos}' AND week = {$wk} AND year = {$yr};");
+        $players = $GLOBALS['DB2']->query("SELECT * FROM players WHERE position = '{$pos}' AND week = {$wk} AND year = {$yr};");
         $player_array = array();
         foreach ($players as $player) {
           $first_name = $player['first_name'];
@@ -444,7 +444,7 @@
 
       static function deleteAll()
       {
-        $GLOBALS['DB']->exec("DELETE FROM players;");
+        $GLOBALS['DB2']->exec("DELETE FROM players;");
       }
     }
 ?>
