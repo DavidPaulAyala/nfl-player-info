@@ -4,13 +4,13 @@
 }
 
 
-html, body {
+html, body, div.grass, div.index {
   height:100%;
 }
 
 .index {
   background-image: url("../img/stadium.jpg");
-  background-size: auto;
+  background-size: cover;
 }
 
 .indexNB {

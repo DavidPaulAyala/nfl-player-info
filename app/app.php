@@ -145,6 +145,9 @@
 
     $app->post("/clear", function() use($app) {
       Player::deleteAll();
+      FantasyPlayer::deleteAll();
+      Team::deleteAll();
+      User::deleteAll();
       return $app->redirect("/");
     });
 
