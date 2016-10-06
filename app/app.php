@@ -3,6 +3,7 @@
     require_once __DIR__."/../src/Player.php";
     require_once __DIR__."/../src/FantasyPlayer.php";
     require_once __DIR__."/../src/Team.php";
+    require_once __DIR__."/../src/User.php";
 
 
 
@@ -28,8 +29,12 @@
     ));
 
     $app->get("/", function() use ($app) {
-      $teams = Team::getAll();
-      return $app['twig']->render("index.html.twig", array('teams' => $teams));
+      if(isset($_SESSION['logged_in'])) {
+        $user = User::find($_SESSION['user_id']);
+        $teams = $user->getTeams();
+        return $app['twig']->render("index.html.twig", array('teams' => $teams));
+      }
+      return $app['twig']->render("login.html.twig");
     });
 
     $app->get("/admin", function() use($app) {
@@ -144,7 +149,7 @@
     });
 
     $app->post("/create_team", function() use($app) {
-      $new_team = new Team($_POST['owner'], $_POST['team']);
+      $new_team = new Team($_SESSION['user_id'], $_POST['team']);
       $new_team->save();
       $players = null;
       return $app['twig']->render("team.html.twig", array('team' => $new_team, 'players' => $players));
@@ -164,6 +169,40 @@
       $players = $team->getPlayers();
 
       return $app['twig']->render("team.html.twig", array('team' => $team, 'players' => $players));
+    });
+
+    $app->post("/newuser", function() use($app) {
+      $name = $_POST['user'];
+      $password = $_POST['password'];
+      $user = new User ($name, $password);
+      $id = $user->addUser();
+      if($id) {
+        $_SESSION['user_id'] = $id;
+        $_SESSION['logged_in'] = true;
+        return $app->redirect("/");
+      } else {
+        return $app['twig']->render("autherror.html.twig");
+      }
+    });
+
+    $app->post("/login", function() use($app) {
+      $name = $_POST['user'];
+      $password = $_POST['password'];
+      $user = new User ($name, $password);
+      $id = $user->login();
+      if($id) {
+        $_SESSION['user_id'] = $id;
+        $_SESSION['logged_in'] = true;
+        return $app->redirect("/");
+      } else {
+        return $app['twig']->render("autherror.html.twig");
+      }
+    });
+
+    $app->get('/logout', function() use($app) {
+      $_SESSION['logged_in'] = null;
+      $_SESSION['user_id'] = null;
+      return $app->redirect("/");
     });
 
     return $app;

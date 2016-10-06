@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>NFL Players</title>
+  </head>
+  <body>
+    <div class="container">
+      <a href='/admin'><button type='button' class='btn btn-primary'>Admin Page</button></a>
+      <div class="jumbotron">
+        <h1>Fanatsy Football</h1>
+      </div>
+      <nav class="navbar navbar-dark bg-success">
+          <p class="navbar-brand">Top 15 Performers</p>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+              <a class="nav-link" href="/qb">Quarterback</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/rb">Running Back</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/wr">Wide Receiver</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/te">Tight End</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/k">Kicker</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/def">Defense</a>
+            </li>
+          </ul>
+      </nav>
+      <div class='fantasy'>
+        <h3>Fantasy League</h3>
+        <form action='/login' method='post'>
+          <h4>Log in</h4>
+          <label for='user'>Username:</label>
+          <input type='text' name='user' id='user'>
+          <label for='password'>Your Password:</label>
+          <input type='password' name='password' id='password'>
+          <button class='btn btn-success' type='submit'>Log In!</button>
+        </form>
+        <form action='/newuser' method='post'>
+          <h4>Create new User</h4>
+          <label for='user'>Username:</label>
+          <input type='text' name='user' id='user'>
+          <label for='password'>Your Password:</label>
+          <input type='password' name='password' id='password'>
+          <button class='btn btn-success' type='submit'>Create!</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

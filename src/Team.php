@@ -2,13 +2,13 @@
   class Team
   {
     private $id;
-    private $owner;
+    private $user_id;
     private $team;
 
-    function __construct($owner, $team, $id=null)
+    function __construct($user_id, $team, $id=null)
     {
       $this->id = $id;
-      $this->owner = $owner;
+      $this->user_id = $user_id;
       $this->team = $team;
     }
 
@@ -17,9 +17,9 @@
       return $this->id;
     }
 
-    function getOwner()
+    function getUserId()
     {
-      return $this->owner;
+      return $this->user_id;
     }
 
     function getTeam()
@@ -27,9 +27,9 @@
       return $this->team;
     }
 
-    function setOwner($owner)
+    function setUserId($user_id)
     {
-      $this->owner = $owner;
+      $this->user_id = $user_id;
     }
 
     function setTeam($team)
@@ -37,9 +37,16 @@
       $this->team = $team;
     }
 
+    function getOwner()
+    {
+      $owner_obj = $GLOBALS['DB']->query("SELECT * FROM users WHERE id = {$this->user_id};");
+      $owner_arr = $owner_obj->fetch(PDO::FETCH_ASSOC);
+      return $owner_arr['name'];
+    }
+
     function save()
     {
-      $GLOBALS['DB']->exec("INSERT INTO teams (owner, team) VALUES ('{$this->owner}', '{$this->team}');");
+      $GLOBALS['DB']->exec("INSERT INTO teams (user_id, team) VALUES ('{$this->user_id}', '{$this->team}');");
       $this->id = $GLOBALS['DB']->lastInsertID();
     }
 
@@ -79,10 +86,10 @@
       $teams = $GLOBALS['DB']->query("SELECT * FROM teams;");
       $team_array = array();
       foreach ($teams as $team) {
-        $owner = $team['owner'];
+        $user_id = $team['user_id'];
         $team_name = $team['team'];
         $id = $team['id'];
-        $new_team = new Team($owner, $team_name, $id);
+        $new_team = new Team($user_id, $team_name, $id);
         array_push($team_array, $new_team);
       }
       return $team_array;
