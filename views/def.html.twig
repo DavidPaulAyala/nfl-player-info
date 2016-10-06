@@ -8,58 +8,68 @@
     <title>Defense</title>
   </head>
   <body>
+    <div class="grass">
     <div class="container">
       <div class="jumbotron">
-        <h1>{{ year }} Weekly Stats</h1>
+        <h1>Defenses</h1>
       </div>
-      <h2>Defense Week {{ week }}</h2>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Position
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/qb/{{ week }}/{{ year }}">Quarterback</a></li>
-          <li><a class="dropdown-item" href="/rb/{{ week }}/{{ year }}">Running Back</a></li>
-          <li><a class="dropdown-item" href="/wr/{{ week }}/{{ year }}">Wide Receiver</a></li>
-          <li><a class="dropdown-item" href="/te/{{ week }}/{{ year }}">Tight End</a></li>
-          <li><a class="dropdown-item" href="/k/{{ week }}/{{ year }}">Kicker</a></li>
-        </ul>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Year
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/{{ pos }}/{{ week }}/2016">2016</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/{{ week }}/2015">2015</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/{{ week }}/2014">2014</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/{{ week }}/2013">2013</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/{{ week }}/2012">2012</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/{{ week }}/2011">2011</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/{{ week }}/2010">2010</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/{{ week }}/2009">2009</a></li>
-        </ul>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Week
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/{{ pos }}/1/{{ year }}">Week 1</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/2/{{ year }}">Week 2</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/3/{{ year }}">Week 3</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/4/{{ year }}">Week 4</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/5/{{ year }}">Week 5</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/6/{{ year }}">Week 6</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/7/{{ year }}">Week 7</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/8/{{ year }}">Week 8</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/9/{{ year }}">Week 9</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/10/{{ year }}">Week 10</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/11/{{ year }}">Week 11</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/12/{{ year }}">Week 12</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/13/{{ year }}">Week 13</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/14/{{ year }}">Week 14</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/15/{{ year }}">Week 15</a></li>
-          <li><a class="dropdown-item" href="/{{ pos }}/16/{{ year }}">Week 16</a></li>
-        </ul>
-      </div>
+        <h2>Top 15 Defenses for Week {{ week }}, {{ year }}</h2>
+        <div class="navbar navbar-default navbar-custom" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="/">Home</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Position<b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-level">
+                            <li><a href="/qb/{{ week }}/{{ year }}">Quarterback</a></li>
+                            <li><a href="/rb/{{ week }}/{{ year }}">Running Back</a></li>
+                            <li><a href="/wr/{{ week }}/{{ year }}">Wide Receiver</a></li>
+                            <li><a href="/te/{{ week }}/{{ year }}">Tight End</a></li>
+                            <li><a href="/k/{{ week }}/{{ year }}">Kicker</a></li>
+                            <li><a href="/def/{{ week }}/{{ year }}">Defense</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Year<b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-level">
+                          <li><a href="/{{ pos }}/{{ week }}/2016">2016</a></li>
+                          <li><a href="/{{ pos }}/{{ week }}/2015">2015</a></li>
+                          <li><a href="/{{ pos }}/{{ week }}/2014">2014</a></li>
+                          <li><a href="/{{ pos }}/{{ week }}/2013">2013</a></li>
+                          <li><a href="/{{ pos }}/{{ week }}/2012">2012</a></li>
+                          <li><a href="/{{ pos }}/{{ week }}/2011">2011</a></li>
+                          <li><a href="/{{ pos }}/{{ week }}/2010">2010</a></li>
+                          <li><a href="/{{ pos }}/{{ week }}/2009">2009</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Week<b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-level">
+                          <li><a href="/{{ pos }}/1/{{ year }}">Week 1</a></li>
+                          <li><a href="/{{ pos }}/2/{{ year }}">Week 2</a></li>
+                          <li><a href="/{{ pos }}/3/{{ year }}">Week 3</a></li>
+                          <li><a href="/{{ pos }}/4/{{ year }}">Week 4</a></li>
+                          <li><a href="/{{ pos }}/5/{{ year }}">Week 5</a></li>
+                          <li><a href="/{{ pos }}/6/{{ year }}">Week 6</a></li>
+                          <li><a href="/{{ pos }}/7/{{ year }}">Week 7</a></li>
+                          <li><a href="/{{ pos }}/8/{{ year }}">Week 8</a></li>
+                          <li><a href="/{{ pos }}/9/{{ year }}">Week 9</a></li>
+                          <li><a href="/{{ pos }}/10/{{ year }}">Week 10</a></li>
+                          <li><a href="/{{ pos }}/11/{{ year }}">Week 11</a></li>
+                          <li><a href="/{{ pos }}/12/{{ year }}">Week 12</a></li>
+                          <li><a href="/{{ pos }}/13/{{ year }}">Week 13</a></li>
+                          <li><a href="/{{ pos }}/14/{{ year }}">Week 14</a></li>
+                          <li><a href="/{{ pos }}/15/{{ year }}">Week 15</a></li>
+                          <li><a href="/{{ pos }}/16/{{ year }}">Week 16</a></li>
+                        </ul>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </div>
       <table>
         <tr>
             <th>Name</th>
@@ -82,12 +92,9 @@
                 <td>{{ player.getSafety }}</td>
                 <td>{{ player.getPtsAlw }}</td>
             </tr>
-        {% endfor %}
-        </table>
-        <br>
-        <form action="/" method="get">
-            <button class="btn btn-primary" type="submit">Home</button>
-        </form>
-    </div>
+            {% endfor %}
+            </table>
+        </div>
+        </div>
   </body>
 </html>
