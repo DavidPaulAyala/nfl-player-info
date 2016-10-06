@@ -32,7 +32,7 @@
       if(isset($_SESSION['logged_in'])) {
         $user = User::find($_SESSION['user_id']);
         $teams = $user->getTeams();
-        return $app['twig']->render("index.html.twig", array('teams' => $teams));
+        return $app['twig']->render("index.html.twig", array('user' => $user, 'teams' => $teams));
       }
       return $app['twig']->render("login.html.twig");
     });

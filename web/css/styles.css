@@ -3,6 +3,10 @@
   src: url("../font/redzone.ttf");
 }
 
+html, body {
+  height:100%;
+}
+
 .grass {
   background-image: url("../img/grass.jpg");
   background-size: cover;
