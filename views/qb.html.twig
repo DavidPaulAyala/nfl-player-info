@@ -11,26 +11,20 @@
     <div class="grass">
     <div class="container">
       <div class="jumbotron">
-        <h1>{{ year }} Weekly Stats</h1>
+        <h1>Quarterbacks</h1>
       </div>
-        <h2>Quarterbacks Week {{ week }}</h2>
-
+        <h2>Top 15 Quarterbacks for Week {{ week }}, {{ year }}</h2>
         <div class="navbar navbar-default navbar-custom" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">Home</a>
+                  <a class="navbar-brand" href="/">Home</a>
                 </div>
                 <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Position<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-level">
+                            <li><a href="/qb/{{ week }}/{{ year }}">Quarterback</a></li>
                             <li><a href="/rb/{{ week }}/{{ year }}">Running Back</a></li>
                             <li><a href="/wr/{{ week }}/{{ year }}">Wide Receiver</a></li>
                             <li><a href="/te/{{ week }}/{{ year }}">Tight End</a></li>
