@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="/css/styles.css">
     <title>NFL Players</title>
   </head>
-  <body>
+  <body class="index">
     <div class="container">
       <a href='/admin'><button type='button' class='btn btn-primary'>Admin Page</button></a>
       <a href='/'><button type='button' class='btn btn-primary'>Home</button></a>
       <div class="jumbotron">
-        <h1>Fanatsy Football</h1>
+        <h1>Add Players</h1>
       </div>
-      <nav class="navbar navbar-dark bg-success">
-          <p class="navbar-brand">Top 15 Performers</p>
+      <nav class="navbar navbar-dark indexNB">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="nav-item">
+            <h2>Top 15 Performers</h2>
+          </li>
+        </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
               <a class="nav-link" href="/qb">Quarterback</a>
@@ -36,6 +40,8 @@
             </li>
           </ul>
       </nav>
+      <div class="row">
+        <div class="col-md-5 well fantasy">
       <h3>{{ team.getTeam }}</h3>
       <h4>Owner: {{team.getOwner }}</h4>
       {% if players %}
@@ -44,17 +50,24 @@
         <p>{{ player.getName }} -  {{ player.getPosition }} - {{ player.getTeam }}</p>
         {% endfor %}
       {% endif %}
-
       <form action='/add_player' method='post'>
         <h4>Add A Player</h4>
         <input type='hidden' name='team_id' value='{{ team.getId }}'>
         <label for='name'>Player Name:</label>
         <input type='text' name='name' id='name'>
+        <br>
         <label for='team'>Player's Team:</label>
         <input type='text' name='team' id='team'>
+        <br>
         <label for='position'>Player's Position:</label>
         <input type='text' name='position' id='position'>
+        <br>
         <button class='btn btn-success' type='submit'>Create!</button>
       </form>
+    </div>
+    <div class="col-md-6 logo">
+      <img src="/img/catch.jpg"/>
+       </div>
+    </div>
     </div>
   </body>
