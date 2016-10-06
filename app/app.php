@@ -13,12 +13,12 @@
 
     $app['debug'] = true;
 
-    $server2 = 'mysql:host=localhost;dbname=nfl_players';
+    $server2 = 'mysql:host=localhost:8889;dbname=nfl_players';
     $username = 'root';
     $password = 'root';
     $DB2 = new PDO($server2, $username, $password);
 
-    $server = 'mysql:host=localhost;dbname=fantasy';
+    $server = 'mysql:host=localhost:8889;dbname=fantasy';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -155,7 +155,7 @@
 
     $app->post("/add_player", function() use($app) {
 
-      
+
       return $app['twig']->render("team.html.twig", array('team' => $team));
     });
 

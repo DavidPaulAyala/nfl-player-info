@@ -1,9 +1,61 @@
-.jumbotron {
+@font-face {
+  font-family: redzone;
+  src: url("../font/redzone.ttf");
+}
+
+.grass {
+  background-image: url("../img/grass.jpg");
+  background-size: cover;
+}
+
+  .jumbotron {
   text-align: center;
+  background-image: url("../img/cowboys-stadium.jpg");
+  background-size: cover;
+  font-family: redzone;
+  color: #ba091a;
+  text-shadow: 2px 2px blue;
 }
 
 .dropdown {
-  float: right !important;
+  float: right;
+}
+
+.dropdown ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown li {
+    display: inline;
+}
+
+.navbar-custom {
+    background-color: #229912;
+    border: none;
+}
+
+.navbar.navbar-default.navbar-custom a {
+  color: white;
+}
+
+.nav.navbar-nav.navbar-right li a {
+  color: white;
+}
+
+.navbar-nav > li > .dropdown-menu {
+  background-color: #229912;
+}
+
+.navbar-nav > li a:hover{
+    background-color: #4cd13a;
+}
+
+h2 {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 
@@ -18,9 +70,10 @@ th, td {
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){background-color: #229912}
 
 th {
-    background-color: #4CAF50;
+    background-color: #229912;
     color: white;
 }
 
