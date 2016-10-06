@@ -1,45 +1,24 @@
 # _NFL Players_
-#### _08 October 2016_
+#### _07 October 2016_
 
 #### By _**David Ayala and Josh Huffman**_
 
 ## Description
 
-_info_
+_This web app allows a user to view football statistics and create a fantasy football team.  Users are able to view statistics for the top 15 performers by fantasy points in a variety of positions and going back to 2009.  Users are able to log in to the site and create a team and add players to their teams._
 
 ## Specifications
 
 |Behavior|Input        |Output|
 |--------|:-----------:|-----:|
-||||
-||||
-
-access xml document from nfl URL
-parse info and save into database
-access database with Silex
-
-## Development info
-
-http://api.fantasy.nfl.com/v1/players/scoringleaders?season=2016&week=1
-
-http://api.fantasy.nfl.com/v1/docs/service?serviceName=playersScoringLeaders
-
-http://webtutsdepot.com/2009/07/25/how-to-parse-xml-with-php-part-one/
-
-http://webtutsdepot.com/2009/07/26/how-to-parse-xml-with-php-part2-xml-with-atrributes/
-
-
-git config --local include.path ../.gitconfig
-
-http://fftoday.com/stats/
-
-http://www.fantasyfootballnerd.com/fantasy-football-api
-
-http://www.fantasyfootballnerd.com/service/players/xml/q6iqzehse977/QB/
-
-q6iqzehse977
-
-
+|Obtain Player List from NFL API|www.exampleNFL-API.com|Tom Brady, Andrew Luck, etc.|
+|Obtain multiple fields of info for players|www.exampleNFL-API.com|Tom Brady, points=35, td=4, pass yards=303, etc.|
+|Arrange in list by position,week,year|QB/Week 3/2016|Tom Brady, points=35, td=4, pass yards=303,Andre Luck, points=25, td=2, pass yards=225, etc.|
+|Add User for Fantasy League|new user: Dave|new user: Dave|
+|Not allow users with the same name|new user: Dave|Dave taken, please enter new user|
+|Add password for new user login|new user: Dave password: 576767|new user created: Dave, password:576767|
+|Allow user to create team name|New Team Name: Warriors|New Team Name: Warriors|
+|Allow team to add players|Team Warriors add new player Tom Brady|Tom Brady on team Warriors|
 
 ## Technologies Used
 
