@@ -3,6 +3,16 @@
   src: url("../font/redzone.ttf");
 }
 
+.index {
+  background-image: url("../img/stadium.jpg");
+  background-size: auto;
+}
+
+.indexNB {
+  background-color: #229912;
+  border-color: #ba091a;
+}
+
 .grass {
   background-image: url("../img/grass.jpg");
   background-size: cover;
@@ -33,11 +43,15 @@
 
 .navbar-custom {
     background-color: #229912;
-    border: none;
+    border-color: #ba091a;
 }
 
 .navbar.navbar-default.navbar-custom a {
   color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  text-shadow: 2px 2px red;
+  font-family: impact;
 }
 
 .nav.navbar-nav.navbar-right li a {
@@ -50,6 +64,14 @@
 
 .navbar-nav > li a:hover{
     background-color: #4cd13a;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  text-shadow: 2px 2px red;
+  font-family: impact;
 }
 
 h2 {
