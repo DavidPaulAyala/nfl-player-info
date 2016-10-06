@@ -102,7 +102,7 @@
     });
 
     $app->get("/te", function() use($app) {
-      $$url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
+      $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
       $all_info = simplexml_load_file($url);
       sleep(1);
       $wk = (int) $all_info['week'] - 1;

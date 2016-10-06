@@ -8,6 +8,10 @@ html, body, div.grass, div.index {
   height:100%;
 }
 
+.logo {
+  background-image: url("../img/nfllogo.jpg");
+}
+
 .index {
   background-image: url("../img/stadium.jpg");
   background-size: cover;
