@@ -42,12 +42,12 @@
       </nav>
       <div class="row">
         <div class="col-md-5 well fantasy">
-      <h3>{{ team.getTeam }}</h3>
-      <h4>Owner: {{team.getOwner }}</h4>
+      <h2>{{ team.getTeam }}</h2>
+      <h2>Owner: {{team.getOwner }}</h2>
       {% if players %}
-        <h4>Current Players</h4>
+        <h3>Current Players</h3>
         {% for player in players %}
-        <p>{{ player.getName }} -  {{ player.getPosition }} - {{ player.getTeam }}</p>
+        <h4>{{ player.getName }} -  {{ player.getPosition }} - {{ player.getTeam }}</h4>
         {% endfor %}
       {% endif %}
       <form action='/add_player' method='post'>

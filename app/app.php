@@ -148,6 +148,7 @@
       FantasyPlayer::deleteAll();
       Team::deleteAll();
       User::deleteAll();
+      session_unset();
       return $app->redirect("/");
     });
 

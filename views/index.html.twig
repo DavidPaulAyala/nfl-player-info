@@ -42,9 +42,9 @@
       </nav>
       <div class="row">
         <div class="col-md-5 well fantasy">
-        <h3>{{ user.getName }}'s Fantasy League</h3>
+        <h2>{{ user.getName }}'s Fantasy League</h2>
         {% if teams is not empty %}
-          <h4>Fantasy Teams</h3>
+          <h3>Fantasy Teams</h3>
           <ul>
             {% for team in teams %}
               <li><a href='/team/{{ team.getId }}'>{{ team.getTeam }}</a></li>
@@ -52,7 +52,7 @@
           </ul>
         {% endif %}
         <form action='/create_team' method='post'>
-          <h4>Create a Team</h4>
+          <h3>Create a Team</h3>
           <label for='team'>Team Name:</label>
           <input type='text' name='team' id='team'>
           <br>
