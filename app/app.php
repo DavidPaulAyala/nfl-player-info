@@ -74,7 +74,6 @@
     $app->get("/qb", function() use($app) {
       $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
       $all_info = simplexml_load_file($url);
-      sleep(1);
       $wk = (int) $all_info['week'] - 1;
       $yr = (int) $all_info['season'];
       $players = Player::getPosWkYr("QB", $wk, $yr);
@@ -84,7 +83,6 @@
     $app->get("/rb", function() use($app) {
       $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
       $all_info = simplexml_load_file($url);
-      sleep(1);
       $wk = (int) $all_info['week'] - 1;
       $yr = (int) $all_info['season'];
       $players = Player::getPosWkYr("RB", $wk, $yr);
@@ -94,7 +92,7 @@
     $app->get("/wr", function() use($app) {
       $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
       $all_info = simplexml_load_file($url);
-      sleep(1);
+      // sleep(1);
       $wk = (int) $all_info['week'] - 1;
       $yr = (int) $all_info['season'];
       $players = Player::getPosWkYr("WR", $wk, $yr);
@@ -104,7 +102,6 @@
     $app->get("/te", function() use($app) {
       $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
       $all_info = simplexml_load_file($url);
-      sleep(1);
       $wk = (int) $all_info['week'] - 1;
       $yr = (int) $all_info['season'];
       $players = Player::getPosWkYr("TE", $wk, $yr);
@@ -114,7 +111,6 @@
     $app->get("/k", function() use($app) {
       $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
       $all_info = simplexml_load_file($url);
-      sleep(1);
       $wk = (int) $all_info['week'] - 1;
       $yr = (int) $all_info['season'];
       $players = Player::getPosWkYr("K", $wk, $yr);
@@ -124,7 +120,6 @@
     $app->get("/def", function() use($app) {
       $url = "http://api.fantasy.nfl.com/v1/players/scoringleaders";
       $all_info = simplexml_load_file($url);
-      sleep(1);
       $wk = (int) $all_info['week'] - 1;
       $yr = (int) $all_info['season'];
       $players = Player::getPosWkYr("DEF", $wk, $yr);
